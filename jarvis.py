@@ -10,7 +10,6 @@ import screen_brightness_control as sbc
 import threading
 from PIL import Image
 
-# Initialize TTS engine
 engine = pyttsx3.init()
 engine.setProperty('rate', 170)
 voices = engine.getProperty('voices')
@@ -36,7 +35,7 @@ def check_connection():
 def wish_user():
     hour = datetime.datetime.now().hour
     if 1 <= hour < 12:
-        speak("Good morning Jeet!")
+        speak("Good morning Jeet!")  # your name here
     elif 12 <= hour < 17:
         speak("Good afternoon Jeet!")
     elif 17 <= hour < 24:
@@ -220,7 +219,7 @@ def search_wikipedia():
 def get_weather(city):
     import requests
 
-    api_key ="f513d242229f6a5ab9eef7115ef90427"
+    api_key ="Weather api key here"
     base_url = "http://api.openweathermap.org/data/2.5/weather"
     params = {"q": city, "appid": api_key, "units": "metric"}
     response = requests.get(base_url, params=params)
@@ -236,7 +235,7 @@ def get_weather(city):
 def get_news(city):
     import requests
 
-    api_key = "19a82939984f4cb3b423720b77f427bc"
+    api_key = "news api key here"
     url = f"https://newsapi.org/v2/everything?q={city}&apiKey={api_key}&pageSize=5"
     
     try:
@@ -536,7 +535,7 @@ def run_jarvis():
             os.system("rundll32.exe user32.dll,LockWorkStation")
 
         elif "send email" in command:
-            default_sender = "deyj87005@gmail.com"
+            default_sender = "example@gmail.com"
             speak(f"Your email address is {default_sender}. Is that correct? Say yes or no.")
             print(f"Default email: {default_sender}")
             confirmation = take_command()
@@ -639,3 +638,4 @@ if __name__ == "__main__":
         run_jarvis()
     except KeyboardInterrupt:
         speak("Jarvis shutting down. Goodbye!")
+
